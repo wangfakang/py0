@@ -24,21 +24,21 @@
 4.性能优化及性能测试工具   
 =========   
 
-优化先找程序的瓶颈（内存、cpu等各种资源）：   
+* 优化先找程序的瓶颈（内存、cpu等各种资源）：    
 
-  1. python -m cProfile -o test.out test.py    
-  2.1 python -c "import pstats; p=pstats.Stats('test.out'); p.print_stats()"     
-  2.2 python -c "import pstats; p=pstats.Stats('test.out'); p.sort_stats('time').print_stats()"    #根据时间进行排序
+  * 1. python -m cProfile -o test.out test.py    
+  * 2.1 python -c "import pstats; p=pstats.Stats('test.out'); p.print_stats()"     
+  * 2.2 python -c "import pstats; p=pstats.Stats('test.out'); p.sort_stats('time').print_stats()"    #根据时间进行排序
        
   然后看到个函数调用比较耗时，就去优化对应的函数。    
-     
-优化点：  
+     
+* 优化点：   
 
-  1.循环逻辑里面的循环体越简单越好，能放在循环外面的就放在外面。    
-  2.多重if条件判断把简单条件以及计算机容易判断的条件放在前面（逻辑短路原理）。    
-  3.选择合适的数据结构比如list、set、dict依据场景。      
-  4.避免系统调用。    
-  5.使用pypy。     
+  * 1.循环逻辑里面的循环体越简单越好，能放在循环外面的就放在外面。    
+  * 2.多重if条件判断把简单条件以及计算机容易判断的条件放在前面（逻辑短路原理）。    
+  * 3.选择合适的数据结构比如list、set、dict依据场景。      
+  * 4.避免系统调用。    
+  * 5.使用pypy。     
 
 
 Thx
