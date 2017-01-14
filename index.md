@@ -1,37 +1,51 @@
-## Welcome to GitHub Pages
+1.python的函数参数传值还是传址？  
 
-You can use the [editor on GitHub](https://github.com/wangfakang/py0/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+    其实python没有什么可以直接操作传值还是传址，Python参数传递采用的肯定是“传对象引用”的方式。这种方式相当于传值和传引用的一种综合。如果函数收
+到的是一个可变对象（比如字典或者列表）的引用，就能修改对象的原始值－－相当于通过“传引用”来传递对象。如果函数收到的是一个不可变对象（比如数字、
+、字符或者元组）的引用，就不能直接修改原始对象－－相当于通过“传值'来传递对象。   
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+2.那些对象是可以修改、那些不可以修改？    
+可变对象：字典、列表、集合    
+不可变对象：数字、字符或者元组    
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+3.命令行和文件执行的一些差异   
 
-# Header 1
-## Header 2
-### Header 3
+我遇到的问题和这个帖子里面的问题底层原理一样：[here](https://www.zhihu.com/question/53536750)   
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+4.性能优化及性能测试工具   
 
-**Bold** and _Italic_ and `Code` text
+优化先找程序的瓶颈（内存、cpu等各种资源）：   
 
-[Link](url) and ![Image](src)
-```
+  1. python -m cProfile -o test.out test.py    
+  2.1 python -c "import pstats; p=pstats.Stats('test.out'); p.print_stats()"     
+  2.2 python -c "import pstats; p=pstats.Stats('test.out'); p.sort_stats('time').print_stats()"    #根据时间进行排序
+       
+  然后看到个函数调用比较耗时，就去优化对应的函数。    
+     
+优化点：  
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+  1.循环逻辑里面的循环体越简单越好，能放在循环外面的就放在外面。    
+  2.多重if条件判断把简单条件以及计算机容易判断的条件放在前面（逻辑短路原理）。    
+  3.选择合适的数据结构比如list、set、dict依据场景。      
+  4.避免系统调用。    
+  5.使用pypy。     
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/wangfakang/py0/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Thx
+====
 
-### Support or Contact
+* chunshengsterATgmail.com
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+[Back to TOC](#table-of-contents)
+
+
+Author
+====
+* Linux\nginx\golang\c\c++\lua\python爱好者
+* 欢迎一起交流  一起学习# 
+* Others say good and Others good
+
+[Back to TOC](#table-of-contents)
